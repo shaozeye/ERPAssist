@@ -11,7 +11,8 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:ERPAssist"
         mc:Ignorable="d"
-        Title="MainWindow" Height="750" Width="1300" WindowStartupLocation="CenterScreen" DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+        Title="ERPAssist    Version3.0" Height="750" Width="1300" Icon="Icon/Icon.png" WindowStartupLocation="CenterScreen" DataContext="{Binding Source={StaticResource Locator},Path=Main}">
+    
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="auto"/>
@@ -72,7 +73,7 @@
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <GroupBox>
+                <GroupBox BorderThickness="0">
                     <ListBox>
                         <ListBoxItem IsSelected="True" >
                             <materialDesign:PackIcon Kind="FileCode" Width="30" Height="30" Margin="5" ToolTip="编码"/>

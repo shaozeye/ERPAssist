@@ -22,12 +22,13 @@ namespace ERPAssist.Service
             IWorkbook workbook = null;
             ISheet sheet = null;
             IRow cells = null;
+            FileStream fs;
             if (!File.Exists(path))
             {
                 return null;
             }
-
-            FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.Read);
+           
+            fs = new FileStream(path, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
             if (Path.GetExtension(path).ToLower()==".xlsx")
             {
                 workbook = new XSSFWorkbook(fs);
@@ -42,7 +43,7 @@ namespace ERPAssist.Service
             {
                 table.Columns.Add(i.ToString());
             }
-            for (int i = 4; i < sheet.LastRowNum; i++)
+            for (int i = 0; i < sheet.LastRowNum; i++)
             {
                 cells = sheet.GetRow(i);
                 DataRow row = table.NewRow();

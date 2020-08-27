@@ -27,38 +27,83 @@
         </DockPanel>
         <Border Grid.Column="1">
             <DockPanel>
-                <UniformGrid Columns="3" DockPanel.Dock="Top">
-                 
-                        
-                  
+                <UniformGrid Columns="4" DockPanel.Dock="Top">
                     <StackPanel>
                         <materialDesign:Card Margin="5,0">
                             <StackPanel Margin="5" Orientation="Horizontal">
-                            <TextBox  Width="280"
+                                <TextBox  Width="180"
   materialDesign:HintAssist.Hint="品号/品名"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
   VerticalAlignment="Top"/>
-                            <Button Style="{StaticResource MaterialDesignIconButton}" VerticalAlignment="Top">
-                                <materialDesign:PackIcon Kind="Search"/>
-                            </Button>
+                                <Button Style="{StaticResource MaterialDesignIconButton}" VerticalAlignment="Top">
+                                    <materialDesign:PackIcon Kind="Search"/>
+                                </Button>
 
-                        </StackPanel>
-                    </materialDesign:Card>
-                    <StackPanel Margin="5">
+                            </StackPanel>
+                        </materialDesign:Card>
+                        <StackPanel Margin="5">
                             <materialDesign:Card 
  
-  Padding="8">
+  Padding="11">
                                 <TextBlock
-    FontSize="16">
-  正在加载
+    FontSize="16" Text="{Binding encodingModel.Status}">
+  
                                 </TextBlock>
+                                
                             </materialDesign:Card>
                         </StackPanel>
+                        
                     </StackPanel>
-                  
-
 
                     <materialDesign:Card
+  
+  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+  Padding="0"
+  Width="200">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock Text="{Binding encodingModel.CurrentCount}"
+      Grid.Row="0"
+      Margin="16 16 16 4"
+      Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+   
+                            </TextBlock>
+                            <Separator
+      Grid.Row="1"
+      Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBlock Text="{Binding encodingModel.TotalCount,StringFormat=总表数量：{0}}"
+      Grid.Row="2"
+      Margin="16 0 16 8"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Left"
+      Style="{StaticResource MaterialDesignBody2TextBlock}"></TextBlock>
+                            <StackPanel
+      Grid.Row="2"
+      Orientation="Horizontal"
+      Margin="16 0 16 8"
+      HorizontalAlignment="Right">
+                                <Button
+        HorizontalAlignment="Right"
+        Style="{StaticResource MaterialDesignToolForegroundButton}"
+        Width="30"
+        Padding="2 0 2 0"
+        materialDesign:RippleAssist.IsCentered="True">
+                                    <materialDesign:PackIcon
+          Kind="More" />
+                                </Button>
+
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card 
   
   Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
   Padding="0"
@@ -103,11 +148,12 @@
                                     <materialDesign:PackIcon
           Kind="More" />
                                 </Button>
-                                
+
                             </StackPanel>
                         </Grid>
                     </materialDesign:Card>
-                    <materialDesign:Card
+
+                    <materialDesign:Card 
   
   Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
   Padding="0"
@@ -125,7 +171,7 @@
       Grid.Row="0"
       Margin="16 16 16 4"
       Style="{StaticResource MaterialDesignHeadline5TextBlock}">
-   25
+    BOM
                             </TextBlock>
                             <Separator
       Grid.Row="1"
@@ -136,7 +182,7 @@
       VerticalAlignment="Center"
       HorizontalAlignment="Left"
       Style="{StaticResource MaterialDesignBody2TextBlock}">
-    总表：3500
+    March 19, 2016
                             </TextBlock>
                             <StackPanel
       Grid.Row="2"
@@ -157,9 +203,9 @@
                         </Grid>
                     </materialDesign:Card>
                 </UniformGrid>
-                
+
                 <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding encodingModel.EncodingTable}">
-                    
+
                 </DataGrid>
             </DockPanel>
         </Border>

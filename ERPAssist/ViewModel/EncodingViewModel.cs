@@ -2,9 +2,11 @@
 using ERPAssist.Service;
 using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,6 +20,7 @@ namespace ERPAssist.ViewModel
         public RelayCommand StartEncodingCMD { get; set; }
         public RelayCommand SaveResultCMD { get; set; }
         public EncodingModel  encodingModel { get; set; }
+        public string ExcelPath { get; set; }
 
         public EncodingViewModel()
         {
@@ -41,14 +44,43 @@ namespace ERPAssist.ViewModel
 
         private void OpenExcelFile()
         {
-            throw new NotImplementedException();
+            if (encodingModel.EncodingTable.Columns.Count<1)
+            {
+                encodingModel.Status = "没有加载总表";
+                return;
+            }
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+           
+            if (openFileDialog.ShowDialog()==true)
+            {
+                ExcelPath = openFileDialog.FileName;
+                var e = Path.GetExtension(ExcelPath);
+                if (Path.GetExtension(ExcelPath)==".xls"|| Path.GetExtension(ExcelPath) == ".xlsx")
+                {
+                    encodingModel.Status = Path.GetFileName(ExcelPath);
+                    encodingModel.CurrentTable = NPOIServices.ExcelToDatatable(ExcelPath);
+
+                    encodingModel.EncodingTable = encodingModel.CurrentTable;
+                    encodingModel.CurrentCount = encodingModel.CurrentTable.Rows.Count;
+                }
+                else
+                {
+                    encodingModel.Status = "不是有效的Excle文件";
+                }
+               
+            }
+           
         }
+       
 
         private void GetTotalTable()
         {
+          
             string path = @"\\192.168.0.17\记录表格\物料编码及规则\\仓库物料总表标准版.xls";
 
-            encodingModel.EncodingTable = NPOIServices.ExcelToDatatable(path);
+            encodingModel.EncodingTable = encodingModel.TotalTable = NPOIServices.ExcelToDatatable(path);
+            encodingModel.Status = "总表加载完成";
+            encodingModel.TotalCount = encodingModel.TotalTable.Rows.Count;
         }
     }
 }
