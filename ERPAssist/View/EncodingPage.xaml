@@ -12,26 +12,153 @@
       xmlns:local="clr-namespace:ERPAssist.View"
       mc:Ignorable="d" 
       d:DesignHeight="672.8" d:DesignWidth="1293.6"
-      Title="EncodingPage">
+      Title="EncodingPage" DataContext="{Binding Source={StaticResource Locator},Path=Encoding}">
 
     <Grid >
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DockPanel LastChildFill="False">
-            <Button DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="获取总表" Margin="5"/>
-            <Button DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="打开文件" Margin="5"/>
-            <Button DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="开始编码" Margin="5"/>
-            <Button DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="保存文件" Margin="5"/>
+        <DockPanel LastChildFill="False" Background="#FF424242">
+            <Button Command="{Binding GetTotalTableCMD}" DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="获取总表" Margin="5"/>
+            <Button Command="{Binding OpenExcelFileCMD}" DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="打开文件" Margin="5"/>
+            <Button Command="{Binding StartEncodingCMD}" DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="开始编码" Margin="5"/>
+            <Button Command="{Binding SaveResultCMD}" DockPanel.Dock="Top" Style="{StaticResource MaterialDesignFlatButton}" Content="保存文件" Margin="5"/>
         </DockPanel>
         <Border Grid.Column="1">
             <DockPanel>
-                <TextBox DockPanel.Dock="Top"
-  materialDesign:HintAssist.Hint="Floating Hint"
+                <UniformGrid Columns="3" DockPanel.Dock="Top">
+                 
+                        
+                  
+                    <StackPanel>
+                        <materialDesign:Card Margin="5,0">
+                            <StackPanel Margin="5" Orientation="Horizontal">
+                            <TextBox  Width="280"
+  materialDesign:HintAssist.Hint="品号/品名"
   Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-  VerticalAlignment="Center" />
-                <DataGrid>
+  VerticalAlignment="Top"/>
+                            <Button Style="{StaticResource MaterialDesignIconButton}" VerticalAlignment="Top">
+                                <materialDesign:PackIcon Kind="Search"/>
+                            </Button>
+
+                        </StackPanel>
+                    </materialDesign:Card>
+                    <StackPanel Margin="5">
+                            <materialDesign:Card 
+ 
+  Padding="8">
+                                <TextBlock
+    FontSize="16">
+  正在加载
+                                </TextBlock>
+                            </materialDesign:Card>
+                        </StackPanel>
+                    </StackPanel>
+                  
+
+
+                    <materialDesign:Card
+  
+  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+  Padding="0"
+  Width="200">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+      Grid.Row="0"
+      Margin="16 16 16 4"
+      Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+    BOM
+                            </TextBlock>
+                            <Separator
+      Grid.Row="1"
+      Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBlock
+      Grid.Row="2"
+      Margin="16 0 16 8"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Left"
+      Style="{StaticResource MaterialDesignBody2TextBlock}">
+    March 19, 2016
+                            </TextBlock>
+                            <StackPanel
+      Grid.Row="2"
+      Orientation="Horizontal"
+      Margin="16 0 16 8"
+      HorizontalAlignment="Right">
+                                <Button
+        HorizontalAlignment="Right"
+        Style="{StaticResource MaterialDesignToolForegroundButton}"
+        Width="30"
+        Padding="2 0 2 0"
+        materialDesign:RippleAssist.IsCentered="True">
+                                    <materialDesign:PackIcon
+          Kind="More" />
+                                </Button>
+                                
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card
+  
+  Foreground="{DynamicResource PrimaryHueDarkForegroundBrush}"
+  Padding="0"
+  Width="200">
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                                <RowDefinition
+        Height="Auto" />
+                            </Grid.RowDefinitions>
+                            <TextBlock
+      Grid.Row="0"
+      Margin="16 16 16 4"
+      Style="{StaticResource MaterialDesignHeadline5TextBlock}">
+   25
+                            </TextBlock>
+                            <Separator
+      Grid.Row="1"
+      Style="{StaticResource MaterialDesignLightSeparator}" />
+                            <TextBlock
+      Grid.Row="2"
+      Margin="16 0 16 8"
+      VerticalAlignment="Center"
+      HorizontalAlignment="Left"
+      Style="{StaticResource MaterialDesignBody2TextBlock}">
+    总表：3500
+                            </TextBlock>
+                            <StackPanel
+      Grid.Row="2"
+      Orientation="Horizontal"
+      Margin="16 0 16 8"
+      HorizontalAlignment="Right">
+                                <Button
+        HorizontalAlignment="Right"
+        Style="{StaticResource MaterialDesignToolForegroundButton}"
+        Width="30"
+        Padding="2 0 2 0"
+        materialDesign:RippleAssist.IsCentered="True">
+                                    <materialDesign:PackIcon
+          Kind="More" />
+                                </Button>
+
+                            </StackPanel>
+                        </Grid>
+                    </materialDesign:Card>
+                </UniformGrid>
+                
+                <DataGrid DockPanel.Dock="Top" ItemsSource="{Binding encodingModel.EncodingTable}">
                     
                 </DataGrid>
             </DockPanel>
