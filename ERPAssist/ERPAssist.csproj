@@ -101,12 +101,17 @@
     </ApplicationDefinition>
     <Compile Include="Model\EncodingModel.cs" />
     <Compile Include="Model\MainModel.cs" />
+    <Compile Include="Model\SettingModel.cs" />
     <Compile Include="Service\NPOIServices.cs" />
     <Compile Include="ViewModel\EncodingViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\SettingViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
     <Compile Include="View\EncodingPage.xaml.cs">
       <DependentUpon>EncodingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SettingPage.xaml.cs">
+      <DependentUpon>SettingPage.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -121,6 +126,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="View\EncodingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SettingPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

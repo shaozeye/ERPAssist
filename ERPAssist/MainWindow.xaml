@@ -75,18 +75,21 @@
                 </Grid.ColumnDefinitions>
                 <GroupBox BorderThickness="0">
                     <ListBox>
-                        <ListBoxItem IsSelected="True" >
+                        <Button Foreground="White" Style="{StaticResource MaterialDesignIconButton}" Command="{Binding ChangePageCMD}" CommandParameter="EncodingPage">
                             <materialDesign:PackIcon Kind="FileCode" Width="30" Height="30" Margin="5" ToolTip="编码"/>
-                        </ListBoxItem>
-                        <ListBoxItem >
+                        </Button>
+                        <Button Foreground="White" Style="{StaticResource MaterialDesignIconButton}" Command="{Binding ChangePageCMD}" CommandParameter="DataBasePage">
+
                             <materialDesign:PackIcon Kind="Database" Width="30" Height="30" Margin="5" ToolTip="数据库"/>
-                        </ListBoxItem>
-                        <ListBoxItem >
+                        </Button>
+                        <Button Foreground="White" Style="{StaticResource MaterialDesignIconButton}" Command="{Binding ChangePageCMD}" CommandParameter="TemplatePage">
+
                             <materialDesign:PackIcon Kind="Book" Width="30" Height="30"  Margin="5" ToolTip="模板"/>
-                        </ListBoxItem>
-                        <ListBoxItem  >
-                            <materialDesign:PackIcon Kind="Settings" Width="30" Height="30" Margin="5" ToolTip="设置"/>
-                        </ListBoxItem>
+                        </Button>
+                        <Button Foreground="White" Style="{StaticResource MaterialDesignIconButton}" Command="{Binding ChangePageCMD}" CommandParameter="SettingPage">
+
+                                <materialDesign:PackIcon Kind="Settings" Width="30" Height="30" Margin="5" ToolTip="设置"/>
+                        </Button>
                     </ListBox>
                 </GroupBox>
                 <Frame NavigationUIVisibility="Hidden" Grid.Column="1" Source="{Binding mainModel.PageSource}">

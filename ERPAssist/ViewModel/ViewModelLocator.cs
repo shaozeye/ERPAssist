@@ -45,6 +45,7 @@ namespace ERPAssist.ViewModel
 
             SimpleIoc.Default.Register<MainViewModel>();
             SimpleIoc.Default.Register<EncodingViewModel>();
+            SimpleIoc.Default.Register<SettingViewModel>();
         }
 
         public MainViewModel Main
@@ -59,6 +60,13 @@ namespace ERPAssist.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<EncodingViewModel>();
+            }
+        }
+        public SettingViewModel Setting
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<SettingViewModel>();
             }
         }
 

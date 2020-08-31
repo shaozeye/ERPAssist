@@ -1,5 +1,7 @@
 using ERPAssist.Model;
 using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Command;
+using System;
 
 namespace ERPAssist.ViewModel
 {
@@ -23,6 +25,7 @@ namespace ERPAssist.ViewModel
         /// 
 
         public MainModel mainModel { get; set; }
+        public RelayCommand<string> ChangePageCMD { get; set; }
         public MainViewModel()
         {
             ////if (IsInDesignMode)
@@ -36,6 +39,12 @@ namespace ERPAssist.ViewModel
             ///
             mainModel = new MainModel();
             mainModel.PageSource = "/ERPAssist;component/View/EncodingPage.xaml";
+            ChangePageCMD = new RelayCommand<string>(ChangePage);
+        }
+
+        private void ChangePage(string obj)
+        {
+            mainModel.PageSource = "/ERPAssist;component/View/" + obj + ".xaml";
         }
     }
 }

@@ -37,19 +37,8 @@ namespace ERPAssist.Service
             {
                 workbook = new HSSFWorkbook(fs);
             }
-            sheet= workbook.GetSheetAt(0);
-            cells = sheet.GetRow(4);
-            for (int i = 0; i < cells.LastCellNum; i++)
-            {
-                table.Columns.Add(i.ToString());
-            }
-            for (int i = 0; i < sheet.LastRowNum; i++)
-            {
-                cells = sheet.GetRow(i);
-                DataRow row = table.NewRow();
-                row.ItemArray = cells.Cells.ToArray();
-                table.Rows.Add(row);
-            }
+            sheet = workbook.GetSheetAt(0);
+          
             return table;
         }
     }

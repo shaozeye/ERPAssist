@@ -44,11 +44,11 @@ namespace ERPAssist.ViewModel
 
         private void OpenExcelFile()
         {
-            if (encodingModel.EncodingTable.Columns.Count<1)
-            {
-                encodingModel.Status = "没有加载总表";
-                return;
-            }
+        //    if (encodingModel.EncodingTable.Columns.Count<1)
+        //    {
+        //        encodingModel.Status = "没有加载总表";
+        //        return;
+        //    }
             OpenFileDialog openFileDialog = new OpenFileDialog();
            
             if (openFileDialog.ShowDialog()==true)
@@ -75,9 +75,9 @@ namespace ERPAssist.ViewModel
 
         private void GetTotalTable()
         {
-          
-            string path = @"\\192.168.0.17\记录表格\物料编码及规则\\仓库物料总表标准版.xls";
 
+            //  string path = @"\\192.168.0.17\记录表格\物料编码及规则\\仓库物料总表标准版.xls";
+            string path = @"D:\仓库物料总表标准版.xls";
             encodingModel.EncodingTable = encodingModel.TotalTable = NPOIServices.ExcelToDatatable(path);
             encodingModel.Status = "总表加载完成";
             encodingModel.TotalCount = encodingModel.TotalTable.Rows.Count;

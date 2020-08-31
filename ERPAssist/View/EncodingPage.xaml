@@ -171,7 +171,7 @@
       Grid.Row="0"
       Margin="16 16 16 4"
       Style="{StaticResource MaterialDesignHeadline5TextBlock}">
-    BOM
+    模板设置
                             </TextBlock>
                             <Separator
       Grid.Row="1"
@@ -196,7 +196,7 @@
         Padding="2 0 2 0"
         materialDesign:RippleAssist.IsCentered="True">
                                     <materialDesign:PackIcon
-          Kind="More" />
+          Kind="TrackChanges" />
                                 </Button>
 
                             </StackPanel>
